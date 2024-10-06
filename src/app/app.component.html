@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>LLM Chat App</span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list>
+      <a mat-list-item (click)="newChat()">
+        <mat-icon>add</mat-icon>
+        New Chat
+      </a>
+      <a mat-list-item *ngFor="let chat of chats" (click)="selectChat(chat)">
+        <mat-icon>chat</mat-icon>
+        {{ chat.title }}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-model-selector (modelChange)="onModelChange($event)"></app-model-selector>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

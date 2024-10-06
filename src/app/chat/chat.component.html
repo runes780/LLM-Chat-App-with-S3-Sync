@@ -1,0 +1,13 @@
+<div class="chat-container">
+  <div class="messages">
+    <div *ngFor="let message of messages" class="message" [ngClass]="message.role">
+      <strong>{{ message.role }}:</strong> {{ message.content }}
+    </div>
+  </div>
+  <div class="input-container">
+    <mat-form-field appearance="fill">
+      <input matInput [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Type your message...">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+  </div>
+</div>
